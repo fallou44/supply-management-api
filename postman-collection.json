@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "Supply Management API",
+    "description": "Collection complète pour tester l'API de gestion des approvisionnements",
+    "version": "1.0.0"
+  },
+  "variables": {
+    "baseUrl": "http://localhost:3000",
+    "token": ""
+  },
+  "requests": [
+    {
+      "name": "Auth - Register",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/register",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "test@example.com",
+        "password": "password123",
+        "nom": "John Doe"
+      }
+    },
+    {
+      "name": "Auth - Login",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/login",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "test@example.com",
+        "password": "password123"
+      }
+    },
+    {
+      "name": "Auth - Get Profile",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/auth/profile",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Fournisseur - Create",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/fournisseurs",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "nom": "Fournisseur ABC",
+        "telephone": "221771234567",
+        "adresse": "Dakar, Sénégal"
+      }
+    },
+    {
+      "name": "Fournisseur - Get All",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/fournisseurs",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Fournisseur - Get By ID",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/fournisseurs/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Fournisseur - Update",
+      "method": "PUT",
+      "url": "{{baseUrl}}/api/fournisseurs/:id",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "nom": "Fournisseur XYZ Updated",
+        "telephone": "221779876543",
+        "adresse": "Thiès, Sénégal"
+      }
+    },
+    {
+      "name": "Fournisseur - Delete",
+      "method": "DELETE",
+      "url": "{{baseUrl}}/api/fournisseurs/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Produit - Create (with image)",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/produits",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "type": "multipart/form-data",
+        "fields": {
+          "libelle": "Ordinateur Portable Dell",
+          "prixUnitaire": "750000",
+          "quantiteStock": "10",
+          "image": "[Select File]"
+        }
+      }
+    },
+    {
+      "name": "Produit - Get All",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/produits",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Produit - Get By ID",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/produits/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Produit - Update",
+      "method": "PUT",
+      "url": "{{baseUrl}}/api/produits/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "type": "multipart/form-data",
+        "fields": {
+          "libelle": "Ordinateur Portable HP",
+          "prixUnitaire": "650000"
+        }
+      }
+    },
+    {
+      "name": "Produit - Increment Stock",
+      "method": "PATCH",
+      "url": "{{baseUrl}}/api/produits/:id/increment",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "quantite": 5
+      }
+    },
+    {
+      "name": "Produit - Decrement Stock",
+      "method": "PATCH",
+      "url": "{{baseUrl}}/api/produits/:id/decrement",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "quantite": 3
+      }
+    },
+    {
+      "name": "Produit - Delete",
+      "method": "DELETE",
+      "url": "{{baseUrl}}/api/produits/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Approvisionnement - Create",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/approvisionnements",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "quantite": 50,
+        "fournisseurId": "uuid-du-fournisseur",
+        "produitId": "uuid-du-produit"
+      }
+    },
+    {
+      "name": "Approvisionnement - Get All",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/approvisionnements",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Approvisionnement - Get By ID",
+      "method": "GET",
+      "url": "{{baseUrl}}/api/approvisionnements/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    },
+    {
+      "name": "Approvisionnement - Update",
+      "method": "PUT",
+      "url": "{{baseUrl}}/api/approvisionnements/:id",
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {{token}}"
+      },
+      "body": {
+        "quantite": 75
+      }
+    },
+    {
+      "name": "Approvisionnement - Delete",
+      "method": "DELETE",
+      "url": "{{baseUrl}}/api/approvisionnements/:id",
+      "headers": {
+        "Authorization": "Bearer {{token}}"
+      }
+    }
+  ]
+}
