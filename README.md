@@ -394,9 +394,4 @@ MIT
 
 Développé pour l'examen de fin de module - École Supérieure Professionnelle 221
 
-## 🙏 Remerciements
 
-- Mamadou Diouf - Professeur de Génie Logiciel
-- Neon - Base de données PostgreSQL serverless
-- Cloudinary - Stockage d'images
-- Prisma - ORM moderne et puissant
